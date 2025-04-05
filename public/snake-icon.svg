@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="512" height="512" rx="128" fill="#e91e63"/>
+  
+  <!-- Snake body (cute curvy path) -->
+  <path d="M256 96C176 96 144 160 144 224C144 288 176 352 256 352C336 352 368 288 368 224C368 160 336 96 256 96Z" fill="#81C784"/>
+  <path d="M256 144C196 144 172 192 172 240C172 288 196 336 256 336C316 336 340 288 340 240C340 192 316 144 256 144Z" fill="#A5D6A7"/>
+  
+  <!-- Snake head -->
+  <circle cx="256" cy="144" r="48" fill="#C8E6C9"/>
+  
+  <!-- Eyes -->
+  <circle cx="240" cy="128" r="12" fill="white"/>
+  <circle cx="272" cy="128" r="12" fill="white"/>
+  <circle cx="240" cy="128" r="6" fill="black"/>
+  <circle cx="272" cy="128" r="6" fill="black"/>
+  
+  <!-- Tongue -->
+  <path d="M256 144C256 144 256 160 256 164C256 168 252 172 256 172C260 172 256 168 256 164C256 160 256 144 256 144Z" fill="#FF1744"/>
+  <path d="M256 164C256 164 252 172 248 176C244 180 240 184 240 184M256 164C256 164 260 172 264 176C268 180 272 184 272 184" stroke="#FF1744" stroke-width="3" stroke-linecap="round"/>
+</svg> 

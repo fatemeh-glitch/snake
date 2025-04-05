@@ -1,0 +1,1582 @@
+:root {
+  --primary-color: #4caf50;
+  --primary-light: #66bb6a;
+  --primary-dark: #388e3c;
+  --secondary-color: #ff5722;
+  --secondary-light: #ff8a65;
+  --secondary-dark: #e64a19;
+  --background-color: #121212;
+  --surface-color: #1e1e1e;
+  --text-color: #ffffff;
+  --text-secondary: #b0b0b0;
+  --border-color: #333333;
+  --wall-color: #795548;
+  --spike-color: #f44336;
+  --speed-color: #ffeb3b;
+  --invincible-color: #2196f3;
+  --double-points-color: #9c27b0;
+  --shrink-color: #00bcd4;
+  
+  /* Girly mode colors */
+  --girly-primary: #e91e63;
+  --girly-primary-light: #f48fb1;
+  --girly-primary-dark: #c2185b;
+  --girly-secondary: #9c27b0;
+  --girly-secondary-light: #ba68c8;
+  --girly-secondary-dark: #7b1fa2;
+  --girly-background: #fce4ec;
+  --girly-surface: #f8bbd0;
+  --girly-text: #880e4f;
+  --girly-text-secondary: #ad1457;
+  --girly-border: #f48fb1;
+  --girly-wall: #ec407a;
+  --girly-spike: #d81b60;
+  --girly-speed: #ffeb3b;
+  --girly-invincible: #e91e63;
+  --girly-double-points: #9c27b0;
+  --girly-shrink: #00bcd4;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(76, 175, 80, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(255, 87, 34, 0.1) 0%, transparent 20%);
+  background-attachment: fixed;
+}
+
+/* Girly mode body background */
+body .girly-mode {
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(233, 30, 99, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(156, 39, 176, 0.1) 0%, transparent 20%);
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  max-width: 800px;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+}
+
+/* Girly mode container */
+.game-container.girly-mode {
+  background-color: var(--girly-background);
+  color: var(--girly-text);
+  background-image: 
+    url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f48fb1' fill-opacity='0.1'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f48fb1' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  position: relative;
+}
+
+/* Animal decorations for girly mode */
+.game-container.girly-mode::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 40px;
+  height: 40px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f48fb1'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.6;
+  animation: float 5s ease-in-out infinite;
+}
+
+.game-container.girly-mode::after {
+  content: '';
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f48fb1'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.6;
+  animation: float 5s ease-in-out infinite 1s;
+}
+
+/* Paw print decorations */
+.game-container.girly-mode .paw-print {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f48fb1'%3E%3Cpath d='M4.5 9.5m-2.5 0a2.5 2.5 0 1 1 5 0a2.5 2.5 0 1 1 -5 0'/%3E%3Cpath d='M9 5.5m-2.5 0a2.5 2.5 0 1 1 5 0a2.5 2.5 0 1 1 -5 0'/%3E%3Cpath d='M15 5.5m-2.5 0a2.5 2.5 0 1 1 5 0a2.5 2.5 0 1 1 -5 0'/%3E%3Cpath d='M19.5 9.5m-2.5 0a2.5 2.5 0 1 1 5 0a2.5 2.5 0 1 1 -5 0'/%3E%3Cpath d='M17.34 14.86c-.87-1.02-1.6-1.89-2.48-2.91-.46-.54-1.05-1.08-1.75-1.32-.11-.04-.22-.07-.33-.09-.25-.04-.52-.04-.78-.04s-.53 0-.79.05c-.11.02-.22.05-.33.09-.7.24-1.28.78-1.75 1.32-.87 1.02-1.6 1.89-2.48 2.91-1.31 1.31-2.92 2.76-2.62 4.79.29 1.02 1.02 2.03 2.33 2.32.73.15 3.06-.44 5.54-.44h.18c2.48 0 4.81.58 5.54.44 1.31-.29 2.04-1.31 2.33-2.32.31-2.04-1.3-3.49-2.61-4.8z'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.4;
+}
+
+.game-container.girly-mode .paw-print-1 {
+  top: 30px;
+  left: 30px;
+  transform: rotate(-15deg);
+  animation: float 6s ease-in-out infinite;
+}
+
+.game-container.girly-mode .paw-print-2 {
+  top: 60px;
+  left: 50px;
+  transform: rotate(15deg);
+  animation: float 6s ease-in-out infinite 1s;
+}
+
+.game-container.girly-mode .paw-print-3 {
+  bottom: 30px;
+  right: 30px;
+  transform: rotate(15deg);
+  animation: float 6s ease-in-out infinite 2s;
+}
+
+.game-container.girly-mode .paw-print-4 {
+  bottom: 60px;
+  right: 50px;
+  transform: rotate(-15deg);
+  animation: float 6s ease-in-out infinite 3s;
+}
+
+/* Animal-themed power-ups for girly mode */
+.girly-mode .power-up-speed::before {
+  content: '🐰';
+  font-size: 1.2rem;
+}
+
+.girly-mode .power-up-invincible::before {
+  content: '🦄';
+  font-size: 1.2rem;
+}
+
+.girly-mode .power-up-double_points::before {
+  content: '🦋';
+  font-size: 1.2rem;
+}
+
+.girly-mode .power-up-shrink::before {
+  content: '🐢';
+  font-size: 1.2rem;
+}
+
+/* Animal-themed food for girly mode */
+.girly-mode .food::before {
+  content: '🍎';
+  font-size: 1.2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Animal-themed snake for girly mode */
+.girly-mode .snake {
+  background-color: var(--girly-primary);
+  box-shadow: 0 0 5px rgba(233, 30, 99, 0.5);
+  border-radius: 8px;
+}
+
+.girly-mode .snake-head {
+  background-color: var(--girly-primary-light);
+  box-shadow: 0 0 8px rgba(244, 143, 177, 0.7);
+  border-radius: 10px;
+  position: relative;
+}
+
+.girly-mode .snake-head::before {
+  content: '👀';
+  font-size: 0.8rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Animal-themed obstacles for girly mode */
+.girly-mode .obstacle-wall {
+  background-color: var(--girly-wall);
+  box-shadow: inset 0 0 5px rgba(233, 30, 99, 0.3);
+  border-radius: 4px;
+  position: relative;
+}
+
+.girly-mode .obstacle-wall::before {
+  content: '🌺';
+  font-size: 0.8rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.girly-mode .obstacle-spike {
+  background-color: var(--girly-spike);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  animation: rotate 5s linear infinite;
+  position: relative;
+}
+
+.girly-mode .obstacle-spike::before {
+  content: '🌵';
+  font-size: 0.8rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Animal-themed buttons for girly mode */
+.girly-mode .reset-button::before {
+  content: '🦊';
+  margin-right: 5px;
+}
+
+.girly-mode .pause-button::before {
+  content: '🐱';
+  margin-right: 5px;
+}
+
+.girly-mode .theme-button::before {
+  content: '🦄';
+  margin-right: 5px;
+}
+
+/* Animal-themed legend for girly mode */
+.girly-mode .legend-icon.power-up-speed::before {
+  content: '🐰';
+}
+
+.girly-mode .legend-icon.power-up-invincible::before {
+  content: '🦄';
+}
+
+.girly-mode .legend-icon.power-up-double_points::before {
+  content: '🦋';
+}
+
+.girly-mode .legend-icon.power-up-shrink::before {
+  content: '🐢';
+}
+
+/* Add a cute animal border to the game board in girly mode */
+.girly-mode .game-board {
+  box-shadow: 0 0 30px rgba(233, 30, 99, 0.3);
+  border: 3px solid var(--girly-border);
+  position: relative;
+}
+
+.girly-mode .game-board::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border: 2px dashed var(--girly-primary-light);
+  border-radius: 15px;
+  z-index: -1;
+  animation: pulse 3s infinite;
+}
+
+/* Add a cute animal-themed title for girly mode */
+.girly-mode h1::before {
+  content: '🐍';
+  margin-right: 10px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.girly-mode h1::after {
+  content: '🌸';
+  margin-left: 10px;
+  animation: float 3s ease-in-out infinite 1.5s;
+}
+
+/* Add a cute animal-themed game over message for girly mode */
+.girly-mode .game-over::before {
+  content: '😢';
+  margin-right: 10px;
+  animation: pulse 1s infinite;
+}
+
+/* Add a cute animal-themed start message for girly mode */
+.girly-mode .start-message::before {
+  content: '🐰';
+  margin-right: 10px;
+  animation: blink 1.5s infinite;
+}
+
+/* Add a cute animal-themed paused message for girly mode */
+.girly-mode .paused-message::before {
+  content: '😴';
+  margin-right: 10px;
+}
+
+/* Add a cute animal-themed score display for girly mode */
+.girly-mode .stat-value::before {
+  content: '🌟';
+  margin-right: 5px;
+  font-size: 0.8em;
+}
+
+/* Add a cute animal-themed high score display for girly mode */
+.girly-mode .stat:last-child .stat-value::before {
+  content: '👑';
+}
+
+/* Add a cute animal-themed level display for girly mode */
+.girly-mode .stat:nth-child(2) .stat-value::before {
+  content: '🎀';
+}
+
+/* Add a cute animal-themed instructions for girly mode */
+.girly-mode .instructions::before {
+  content: '📝';
+  position: absolute;
+  top: -15px;
+  left: 10px;
+  font-size: 1.5rem;
+  background-color: var(--girly-background);
+  padding: 0 5px;
+}
+
+/* Add a cute animal-themed power-up legend for girly mode */
+.girly-mode .power-up-legend::before {
+  content: '✨';
+  position: absolute;
+  top: -15px;
+  left: 10px;
+  font-size: 1.5rem;
+  background-color: var(--girly-background);
+  padding: 0 5px;
+}
+
+/* Add a cute animal-themed active power-ups for girly mode */
+.girly-mode .active-power-ups::before {
+  content: '🌟';
+  position: absolute;
+  top: -15px;
+  left: 10px;
+  font-size: 1.5rem;
+  background-color: var(--girly-background);
+  padding: 0 5px;
+}
+
+/* Add a cute animal-themed game info for girly mode */
+.girly-mode .game-info::before {
+  content: '💖';
+  position: absolute;
+  top: -15px;
+  left: 10px;
+  font-size: 1.5rem;
+  background-color: var(--girly-background);
+  padding: 0 5px;
+}
+
+/* Add a cute animal-themed game stats for girly mode */
+.girly-mode .game-stats::before {
+  content: '📊';
+  position: absolute;
+  top: -15px;
+  left: 10px;
+  font-size: 1.5rem;
+  background-color: var(--girly-background);
+  padding: 0 5px;
+}
+
+/* Add a cute animal-themed game header for girly mode */
+.girly-mode .game-header::before {
+  content: '🎮';
+  position: absolute;
+  top: -15px;
+  left: 10px;
+  font-size: 1.5rem;
+  background-color: var(--girly-background);
+  padding: 0 5px;
+}
+
+/* Add a cute animal-themed controls for girly mode */
+.girly-mode .controls::before {
+  content: '🎯';
+  position: absolute;
+  top: -15px;
+  left: 10px;
+  font-size: 1.5rem;
+  background-color: var(--girly-background);
+  padding: 0 5px;
+}
+
+/* Add a cute animal-themed button group for girly mode */
+.girly-mode .button-group::before {
+  content: '🎨';
+  position: absolute;
+  top: -15px;
+  left: 10px;
+  font-size: 1.5rem;
+  background-color: var(--girly-background);
+  padding: 0 5px;
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container::before {
+  content: '🌈';
+  position: absolute;
+  top: -15px;
+  left: 10px;
+  font-size: 1.5rem;
+  background-color: var(--girly-background);
+  padding: 0 5px;
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container::after {
+  content: '🌈';
+  position: absolute;
+  bottom: -15px;
+  right: 10px;
+  font-size: 1.5rem;
+  background-color: var(--girly-background);
+  padding: 0 5px;
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container {
+  position: relative;
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > * {
+  position: relative;
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *::before {
+  position: absolute;
+  top: -15px;
+  left: 10px;
+  font-size: 1.5rem;
+  background-color: var(--girly-background);
+  padding: 0 5px;
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *::after {
+  position: absolute;
+  bottom: -15px;
+  right: 10px;
+  font-size: 1.5rem;
+  background-color: var(--girly-background);
+  padding: 0 5px;
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(odd)::before {
+  content: '🌸';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(even)::before {
+  content: '🌺';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(3n)::before {
+  content: '🌹';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(4n)::before {
+  content: '🌷';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(5n)::before {
+  content: '🌼';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(odd)::after {
+  content: '🦋';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(even)::after {
+  content: '🐰';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(3n)::after {
+  content: '🦊';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(4n)::after {
+  content: '🐱';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(5n)::after {
+  content: '🦄';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(6n)::after {
+  content: '🐢';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(7n)::after {
+  content: '🐼';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(8n)::after {
+  content: '🐨';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(9n)::after {
+  content: '🦁';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(10n)::after {
+  content: '🐯';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(11n)::after {
+  content: '🐮';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(12n)::after {
+  content: '🐷';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(13n)::after {
+  content: '🐸';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(14n)::after {
+  content: '🐙';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(15n)::after {
+  content: '🐬';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(16n)::after {
+  content: '🐳';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(17n)::after {
+  content: '🦒';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(18n)::after {
+  content: '🦘';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(19n)::after {
+  content: '🦥';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(20n)::after {
+  content: '🦦';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(21n)::after {
+  content: '🦨';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(22n)::after {
+  content: '🦡';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(23n)::after {
+  content: '🦃';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(24n)::after {
+  content: '🦜';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(25n)::after {
+  content: '🦢';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(26n)::after {
+  content: '🦚';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(27n)::after {
+  content: '🦉';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(28n)::after {
+  content: '🦅';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(29n)::after {
+  content: '🦆';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(30n)::after {
+  content: '🦇';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(31n)::after {
+  content: '🦋';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(32n)::after {
+  content: '🐛';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(33n)::after {
+  content: '🐜';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(34n)::after {
+  content: '🐝';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(35n)::after {
+  content: '🐞';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(36n)::after {
+  content: '🦗';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(37n)::after {
+  content: '🕷️';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(38n)::after {
+  content: '🦂';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(39n)::after {
+  content: '🦠';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(40n)::after {
+  content: '🦠';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(41n)::after {
+  content: '🦠';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(42n)::after {
+  content: '🦠';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(43n)::after {
+  content: '🦠';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(44n)::after {
+  content: '🦠';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(45n)::after {
+  content: '🦠';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(46n)::after {
+  content: '🦠';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(47n)::after {
+  content: '🦠';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(48n)::after {
+  content: '🦠';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(49n)::after {
+  content: '🦠';
+}
+
+/* Add a cute animal-themed game container for girly mode */
+.girly-mode .game-container > *:nth-child(50n)::after {
+  content: '🦠';
+}
+
+.game-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Girly mode heading */
+.girly-mode h1 {
+  color: var(--girly-primary);
+  text-shadow: 0 0 10px rgba(233, 30, 99, 0.5);
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+  transition: all 0.3s ease;
+}
+
+/* Girly mode heading underline */
+.girly-mode h1::after {
+  background: linear-gradient(90deg, transparent, var(--girly-primary), transparent);
+}
+
+.game-stats {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 500px;
+  background-color: var(--surface-color);
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+/* Girly mode stats */
+.girly-mode .game-stats {
+  background-color: var(--girly-surface);
+  box-shadow: 0 4px 8px rgba(233, 30, 99, 0.2);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 15px;
+  border-right: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+/* Girly mode stat */
+.girly-mode .stat {
+  border-right: 1px solid var(--girly-border);
+}
+
+.stat:last-child {
+  border-right: none;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 5px;
+  transition: all 0.3s ease;
+}
+
+/* Girly mode stat label */
+.girly-mode .stat-label {
+  color: var(--girly-text-secondary);
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+/* Girly mode stat value */
+.girly-mode .stat-value {
+  color: var(--girly-primary);
+}
+
+.game-info {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 1.2rem;
+  min-height: 30px;
+  transition: all 0.3s ease;
+}
+
+.game-over {
+  color: var(--secondary-color);
+  font-weight: bold;
+  font-size: 1.8rem;
+  animation: pulse 1s infinite;
+  text-shadow: 0 0 10px rgba(255, 87, 34, 0.5);
+  transition: all 0.3s ease;
+}
+
+/* Girly mode game over */
+.girly-mode .game-over {
+  color: var(--girly-secondary);
+  text-shadow: 0 0 10px rgba(156, 39, 176, 0.5);
+}
+
+.start-message {
+  color: var(--primary-color);
+  font-weight: bold;
+  animation: blink 1.5s infinite;
+  text-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+  transition: all 0.3s ease;
+}
+
+/* Girly mode start message */
+.girly-mode .start-message {
+  color: var(--girly-primary);
+  text-shadow: 0 0 5px rgba(233, 30, 99, 0.5);
+}
+
+.paused-message {
+  color: var(--text-secondary);
+  font-style: italic;
+  transition: all 0.3s ease;
+}
+
+/* Girly mode paused message */
+.girly-mode .paused-message {
+  color: var(--girly-text-secondary);
+}
+
+.active-power-ups {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  min-height: 40px;
+}
+
+.active-power-up {
+  display: flex;
+  align-items: center;
+  background-color: var(--surface-color);
+  border-radius: 20px;
+  padding: 5px 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  animation: float 3s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+/* Girly mode active power-up */
+.girly-mode .active-power-up {
+  background-color: var(--girly-surface);
+  box-shadow: 0 2px 4px rgba(233, 30, 99, 0.2);
+}
+
+.power-up-icon {
+  font-size: 1.2rem;
+  margin-right: 5px;
+}
+
+.power-up-timer {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+/* Girly mode power-up timer */
+.girly-mode .power-up-timer {
+  color: var(--girly-text-secondary);
+}
+
+.game-board {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--surface-color);
+  border: 3px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+/* Girly mode game board */
+.girly-mode .game-board {
+  box-shadow: 0 0 30px rgba(233, 30, 99, 0.3);
+  border: 3px solid var(--girly-border);
+}
+
+.cell {
+  background-color: #1a1a1a;
+  border-radius: 2px;
+  transition: all 0.1s ease;
+}
+
+/* Girly mode cell */
+.girly-mode .cell {
+  background-color: #fce4ec;
+}
+
+.snake {
+  background-color: var(--primary-color);
+  border-radius: 4px;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+  transition: all 0.3s ease;
+}
+
+/* Girly mode snake */
+.girly-mode .snake {
+  background-color: var(--girly-primary);
+  box-shadow: 0 0 5px rgba(233, 30, 99, 0.5);
+}
+
+.snake-head {
+  background-color: var(--primary-light);
+  border-radius: 6px;
+  box-shadow: 0 0 8px rgba(102, 187, 106, 0.7);
+  transition: all 0.3s ease;
+}
+
+/* Girly mode snake head */
+.girly-mode .snake-head {
+  background-color: var(--girly-primary-light);
+  box-shadow: 0 0 8px rgba(244, 143, 177, 0.7);
+}
+
+.food {
+  background-color: var(--secondary-color);
+  border-radius: 50%;
+  animation: pulse 1s infinite;
+  box-shadow: 0 0 10px rgba(255, 87, 34, 0.7);
+  transition: all 0.3s ease;
+}
+
+/* Girly mode food */
+.girly-mode .food {
+  background-color: var(--girly-secondary);
+  box-shadow: 0 0 10px rgba(156, 39, 176, 0.7);
+}
+
+/* Power-ups */
+.power-up {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.power-up-speed {
+  background-color: var(--speed-color);
+  color: #000;
+}
+
+.power-up-invincible {
+  background-color: var(--invincible-color);
+}
+
+.power-up-double_points {
+  background-color: var(--double-points-color);
+}
+
+.power-up-shrink {
+  background-color: var(--shrink-color);
+}
+
+/* Girly mode power-ups */
+.girly-mode .power-up-speed {
+  background-color: var(--girly-speed);
+}
+
+.girly-mode .power-up-invincible {
+  background-color: var(--girly-invincible);
+}
+
+.girly-mode .power-up-double_points {
+  background-color: var(--girly-double-points);
+}
+
+.girly-mode .power-up-shrink {
+  background-color: var(--girly-shrink);
+}
+
+/* Obstacles */
+.obstacle {
+  border-radius: 2px;
+}
+
+.obstacle-wall {
+  background-color: var(--wall-color);
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.obstacle-spike {
+  background-color: var(--spike-color);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  animation: rotate 5s linear infinite;
+  transition: all 0.3s ease;
+}
+
+/* Girly mode obstacles */
+.girly-mode .obstacle-wall {
+  background-color: var(--girly-wall);
+  box-shadow: inset 0 0 5px rgba(233, 30, 99, 0.3);
+}
+
+.girly-mode .obstacle-spike {
+  background-color: var(--girly-spike);
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.button-group {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+  background-color: var(--primary-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+button:disabled {
+  background-color: var(--text-secondary);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.reset-button {
+  background-color: var(--primary-color);
+}
+
+.pause-button {
+  background-color: var(--secondary-color);
+}
+
+/* Theme button */
+.theme-button {
+  background-color: #9c27b0;
+  color: white;
+}
+
+.theme-button.girly-active {
+  background-color: var(--girly-primary);
+}
+
+/* Girly mode buttons */
+.girly-mode .reset-button {
+  background-color: var(--girly-primary);
+}
+
+.girly-mode .pause-button {
+  background-color: var(--girly-secondary);
+}
+
+.girly-mode button:hover {
+  background-color: var(--girly-primary-light);
+  box-shadow: 0 6px 8px rgba(233, 30, 99, 0.3);
+}
+
+.instructions {
+  background-color: var(--surface-color);
+  border-radius: 10px;
+  padding: 15px;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+/* Girly mode instructions */
+.girly-mode .instructions {
+  background-color: var(--girly-surface);
+  box-shadow: 0 4px 8px rgba(233, 30, 99, 0.2);
+}
+
+.instructions p {
+  margin: 5px 0;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+/* Girly mode instructions text */
+.girly-mode .instructions p {
+  color: var(--girly-text-secondary);
+}
+
+.power-up-legend {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+/* Girly mode power-up legend */
+.girly-mode .power-up-legend {
+  border-top: 1px solid var(--girly-border);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.legend-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+
+.legend-icon.power-up-speed {
+  background-color: var(--speed-color);
+  color: #000;
+}
+
+.legend-icon.power-up-invincible {
+  background-color: var(--invincible-color);
+}
+
+.legend-icon.power-up-double_points {
+  background-color: var(--double-points-color);
+}
+
+.legend-icon.power-up-shrink {
+  background-color: var(--shrink-color);
+}
+
+/* Girly mode legend icons */
+.girly-mode .legend-icon.power-up-speed {
+  background-color: var(--girly-speed);
+}
+
+.girly-mode .legend-icon.power-up-invincible {
+  background-color: var(--girly-invincible);
+}
+
+.girly-mode .legend-icon.power-up-double_points {
+  background-color: var(--girly-double-points);
+}
+
+.girly-mode .legend-icon.power-up-shrink {
+  background-color: var(--girly-shrink);
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .game-container {
+    padding: 10px;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  .game-stats {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .stat {
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    padding: 10px 0;
+  }
+  
+  .stat:last-child {
+    border-bottom: none;
+  }
+  
+  .power-up-legend {
+    grid-template-columns: 1fr;
+  }
+  
+  .button-group {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  button {
+    width: 100%;
+  }
+}
+
+/* Girly mode cell content styles */
+.girly-mode .snake-head-content,
+.girly-mode .food-content,
+.girly-mode .power-up-content,
+.girly-mode .obstacle-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.8rem;
+  z-index: 2;
+}
+
+.girly-mode .snake-head-content {
+  font-size: 0.7rem;
+}
+
+.girly-mode .food-content {
+  font-size: 0.9rem;
+  animation: pulse 1s infinite;
+}
+
+.girly-mode .power-up-content {
+  font-size: 0.9rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.girly-mode .obstacle-content {
+  font-size: 0.8rem;
+}
+
+/* Add paw print decorations to the game board in girly mode */
+.girly-mode .game-board {
+  position: relative;
+}
+
+.girly-mode .game-board::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border: 2px dashed var(--girly-primary-light);
+  border-radius: 15px;
+  z-index: -1;
+  animation: pulse 3s infinite;
+}
+
+/* Add animal-themed decorations to the game container in girly mode */
+.game-container.girly-mode {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add floating animal emojis in the background */
+.game-container.girly-mode::before {
+  content: '🦋';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 2rem;
+  opacity: 0.3;
+  animation: float 5s ease-in-out infinite;
+}
+
+.game-container.girly-mode::after {
+  content: '🐰';
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 2rem;
+  opacity: 0.3;
+  animation: float 5s ease-in-out infinite 1s;
+}
+
+/* Add more floating animals */
+.game-container.girly-mode .floating-animal-1 {
+  content: '🦄';
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  font-size: 1.5rem;
+  opacity: 0.3;
+  animation: float 6s ease-in-out infinite 2s;
+}
+
+.game-container.girly-mode .floating-animal-2 {
+  content: '🐢';
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+  font-size: 1.5rem;
+  opacity: 0.3;
+  animation: float 6s ease-in-out infinite 3s;
+}
+
+/* Add a cute animal-themed title for girly mode */
+.girly-mode h1 {
+  position: relative;
+}
+
+.girly-mode h1::before {
+  content: '🐍';
+  position: absolute;
+  left: -30px;
+  top: 0;
+  font-size: 1.5rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.girly-mode h1::after {
+  content: '🌸';
+  position: absolute;
+  right: -30px;
+  top: 0;
+  font-size: 1.5rem;
+  animation: float 3s ease-in-out infinite 1.5s;
+}
+
+/* Add a cute animal-themed game over message for girly mode */
+.girly-mode .game-over {
+  position: relative;
+}
+
+.girly-mode .game-over::before {
+  content: '😢';
+  position: absolute;
+  left: -30px;
+  top: 0;
+  font-size: 1.5rem;
+  animation: pulse 1s infinite;
+}
+
+/* Add a cute animal-themed start message for girly mode */
+.girly-mode .start-message {
+  position: relative;
+}
+
+.girly-mode .start-message::before {
+  content: '🐰';
+  position: absolute;
+  left: -30px;
+  top: 0;
+  font-size: 1.5rem;
+  animation: blink 1.5s infinite;
+}
+
+/* Add a cute animal-themed paused message for girly mode */
+.girly-mode .paused-message {
+  position: relative;
+}
+
+.girly-mode .paused-message::before {
+  content: '😴';
+  position: absolute;
+  left: -30px;
+  top: 0;
+  font-size: 1.5rem;
+}
+
+/* Add a cute animal-themed score display for girly mode */
+.girly-mode .stat-value {
+  position: relative;
+}
+
+.girly-mode .stat-value::before {
+  content: '🌟';
+  position: absolute;
+  left: -20px;
+  top: 0;
+  font-size: 1rem;
+}
+
+/* Add a cute animal-themed high score display for girly mode */
+.girly-mode .stat:last-child .stat-value::before {
+  content: '👑';
+}
+
+/* Add a cute animal-themed level display for girly mode */
+.girly-mode .stat:nth-child(2) .stat-value::before {
+  content: '🎀';
+}
+
+/* Add a cute animal-themed buttons for girly mode */
+.girly-mode .reset-button {
+  position: relative;
+}
+
+.girly-mode .reset-button::before {
+  content: '🦊';
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+}
+
+.girly-mode .pause-button {
+  position: relative;
+}
+
+.girly-mode .pause-button::before {
+  content: '🐱';
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+}
+
+.girly-mode .theme-button {
+  position: relative;
+}
+
+.girly-mode .theme-button::before {
+  content: '🦄';
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+}
+
+/* Add a cute animal-themed legend for girly mode */
+.girly-mode .legend-icon {
+  position: relative;
+}
+
+.girly-mode .legend-icon.power-up-speed::before {
+  content: '🐰';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1rem;
+}
+
+.girly-mode .legend-icon.power-up-invincible::before {
+  content: '🦄';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1rem;
+}
+
+.girly-mode .legend-icon.power-up-double_points::before {
+  content: '🦋';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1rem;
+}
+
+.girly-mode .legend-icon.power-up-shrink::before {
+  content: '🐢';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1rem;
+}
