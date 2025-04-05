@@ -50,7 +50,6 @@ function App() {
   const [obstacles, setObstacles] = useState<Obstacle[]>([])
   const [isInvincible, setIsInvincible] = useState(false)
   const [isDoublePoints, setIsDoublePoints] = useState(false)
-  const [isSpeedBoost, setIsSpeedBoost] = useState(false)
   const [highScore, setHighScore] = useState(0)
   const [gamePaused, setGamePaused] = useState(false)
   const [girlyMode, setGirlyMode] = useState(false)
@@ -241,7 +240,6 @@ function App() {
           
           // Reset power-up effects
           if (type === 'SPEED') {
-            setIsSpeedBoost(false)
             setGameSpeed(INITIAL_GAME_SPEED - (level - 1) * SPEED_INCREASE_PER_LEVEL)
           } else if (type === 'INVINCIBLE') {
             setIsInvincible(false)
@@ -352,7 +350,6 @@ function App() {
           // Apply immediate effects
           switch (atePowerUp.type) {
             case 'SPEED':
-              setIsSpeedBoost(true)
               setGameSpeed(prevSpeed => Math.max(prevSpeed / 2, 50))
               break
             case 'INVINCIBLE':
@@ -397,7 +394,6 @@ function App() {
     setObstacles([])
     setIsInvincible(false)
     setIsDoublePoints(false)
-    setIsSpeedBoost(false)
     setGamePaused(false)
   }
   
